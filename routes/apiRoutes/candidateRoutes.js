@@ -92,6 +92,7 @@ router.put('/candidate/:id', (req, res) => {
     const sql = `UPDATE candidates SET party_id = ? 
                  WHERE id = ?`;
     const params = [req.body.party_id, req.params.id];
+    
     db.query(sql, params, (err, result) => {
       if (err) {
         res.status(400).json({ error: err.message });
@@ -114,6 +115,7 @@ router.put('/candidate/:id', (req, res) => {
 router.delete('/candidate/:id', (req, res) => {
     const sql = `DELETE FROM candidates WHERE id = ?`;
     const params = [req.params.id];
+
     db.query(sql, params, (err, result) => {
       if (err) {
         res.statusMessage(400).json({ error: res.message });
